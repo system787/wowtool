@@ -2,6 +2,8 @@ plugins {
     id 'java'
 }
 
+apply from: 'buildsystem/dependencies.gradle'
+
 group 'system787.wowtool'
 version '1.0-SNAPSHOT'
 

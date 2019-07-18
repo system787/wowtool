@@ -1,14 +1,10 @@
 package system787.wowtool.data.net.oauth;
 
-import system787.wowtool.data.net.ApiConnection;
+import java.io.IOException;
 
-public class OauthApi {
-    // Authentication
-    public static String OATH_URL = "https://us.battle.net/oauth/token/";
+public interface OauthApi{
 
-    // Keystore
-    private static String mAccessToken;
+    String getToken() throws IOException;
+    boolean isTokenInvalid();
 
-    public OauthApi(String clientId, String clientSecret) {
-    }
 }

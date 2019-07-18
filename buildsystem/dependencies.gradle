@@ -5,27 +5,75 @@ allprojects {
 }
 
 ext {
-    dataDependencies = [
-            Okio:                       "com.squareup.okio:okio:2.2.2",
-            okHttp:                     "com.squareup.okhttp3:okhttp:4.0.0",
-            RxJava:                     "io.reactivex.rxjava2:rxjava:2.2.10",
-            javaxAnnotation:            "javax.annotation:jsr250-api:1.0",
-            javaxInject:                "javax.inject:javax.inject:1",
-            gson:                       "com.google.code.gson:gson:2.8.5"
+    // External Library version numbers
+
+    // Libraries
+    arrowVersion = '1.0.0'
+
+    floggerVersion = '0.4'
+    gsonVersion = '2.8.5'
+
+    okioVersion = '2.2.2'
+    okHttpVersion = '4.0.0'
+
+    rxJavaVersion = "2.2.10"
+
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+
+    // Testing
+    junitVersion = '5.5.0'
+    junitLauncherVersion = '1.5.0'
+    assertJVersion = '3.11.1'
+    mockitoVersion = '2.+'
+
+    domainDependencies = [
+            javaxAnnotation:            "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:                "javax.inject:javax.inject:${javaxInjectVersion}",
+            RxJava:                     "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            arrow:                      "com.fernandocejas:arrow:${arrowVersion}"
     ]
 
-    loggingTools = [
-            flogger:                    "com.google.flogger:flogger:0.4",
-            flogger_system_backend:     "com.google.flogger:flogger-system-backend:0.4"
+    domainTestDependencies = [
+            junit_jupiter:              "org.junit.jupiter:junit-jupiter:${junitVersion}",
+            junit_platform_launcher:    "org.junit.platform:junit-platform-launcher:${junitLauncherVersion}",
+            junit_jupiter_api:          "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            junit_jupiter_engine:       "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+            junit_vintage_engine:       "org.junit.vintage:junit-vintage-engine:${junitVersion}",
+            assertj:                    "org.assertj:assertj-core:${assertJVersion}",
+            mockito:                    "org.mockito:mockito-core:${mockitoVersion}"
+    ]
+
+    dataDependencies = [
+            Okio:                       "com.squareup.okio:okio:${okioVersion}",
+            okHttp:                     "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            RxJava:                     "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            javaxAnnotation:            "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:                "javax.inject:javax.inject:${javaxInjectVersion}",
+            gson:                       "com.google.code.gson:gson:${gsonVersion}"
     ]
 
     dataTestDependencies = [
-            junit_jupiter:              "org.junit.jupiter:junit-jupiter:5.5.0",
-            junit_platform_launcher:    "org.junit.platform:junit-platform-launcher:1.5.0",
-            junit_jupiter_api:          "org.junit.jupiter:junit-jupiter-api:5.5.0",
-            junit_jupiter_engine:       "org.junit.jupiter:junit-jupiter-engine:5.5.0",
-            junit_vintage_engine:       "org.junit.vintage:junit-vintage-engine:5.5.0",
-            assertj:                    "org.assertj:assertj-core:3.11.1",
-            mockito:                    "org.mockito:mockito-core:2.+"
+            junit_jupiter:              "org.junit.jupiter:junit-jupiter:${junitVersion}",
+            junit_platform_launcher:    "org.junit.platform:junit-platform-launcher:${junitLauncherVersion}",
+            junit_jupiter_api:          "org.junit.jupiter:junit-jupiter-api:${junitVersion}",
+            junit_jupiter_engine:       "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
+            junit_vintage_engine:       "org.junit.vintage:junit-vintage-engine:${junitVersion}",
+            assertj:                    "org.assertj:assertj-core:${assertJVersion}",
+            mockito:                    "org.mockito:mockito-core:${mockitoVersion}"
+    ]
+
+    controllerDependencies = [
+            springBootWeb:              "org.springframework.boot:spring-boot-starter-web",
+            springBootActuator:         "org.springframework.boot:spring-boot-starter-actuator"
+    ]
+
+    controllerTestDependencies = [
+            springBootStarterTest:      "org.springframework.boot:spring-boot-starter-test"
+    ]
+
+    loggingTools = [
+            flogger:                    "com.google.flogger:flogger:${floggerVersion}",
+            flogger_system_backend:     "com.google.flogger:flogger-system-backend:${floggerVersion}"
     ]
 }

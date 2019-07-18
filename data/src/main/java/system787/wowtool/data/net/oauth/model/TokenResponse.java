@@ -2,37 +2,22 @@ package system787.wowtool.data.net.oauth.model;
 
 public class TokenResponse {
 
-    private String accessToken;
-    private String tokenType;
-    private Long tokenExpire;
+    private String access_token;
+    private String token_type;
+    private Long expires_in;
 
-    public TokenResponse(String accessToken, String tokenType, Long tokenExpire) {
-        this.accessToken = accessToken;
-        this.tokenType = tokenType;
-        this.tokenExpire = tokenExpire;
+    public TokenResponse() {
     }
 
     public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+        return access_token;
     }
 
     public String getTokenType() {
-        return tokenType;
-    }
-
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
+        return token_type;
     }
 
     public Long getTokenExpire() {
-        return tokenExpire;
-    }
-
-    public void setTokenExpire(Long tokenExpire) {
-        this.tokenExpire = tokenExpire;
+        return expires_in;
     }
 }

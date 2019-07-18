@@ -1,26 +1,24 @@
 package system787.wowtool.data.net.oauth;
 
 import com.google.common.flogger.FluentLogger;
+import com.google.gson.Gson;
 import okhttp3.*;
-import system787.wowtool.data.cache.JsonObjectMapper;
 import system787.wowtool.data.net.config.AppConfig;
 import system787.wowtool.data.net.config.AppConfigMapper;
 import system787.wowtool.data.net.config.EnvConfig;
 import system787.wowtool.data.net.oauth.model.TokenResponse;
 
-import javax.inject.Inject;
+
+import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.Base64;
 
+
 @Singleton
 public class OauthApiImpl implements OauthApi {
-
-    // Dependency Injection
-    private JsonObjectMapper mJsonObjectMapper;
-
     // Config
     private AppConfig mAppConfig = AppConfigMapper.mapAppConfig();
     private EnvConfig mEnvConfig = new EnvConfig();
@@ -31,14 +29,14 @@ public class OauthApiImpl implements OauthApi {
     private final Object tokenLock = new Object();
 
     // Constructor
-    @Inject
-    public OauthApiImpl(JsonObjectMapper jsonObjectMapper) {
-        mJsonObjectMapper = jsonObjectMapper;
+    public OauthApiImpl() {
     }
+
 
     // Logging
     private static final FluentLogger logger = FluentLogger.forEnclosingClass();
 
+    @PostConstruct
     @Override
     public String getToken() throws IOException {
 
@@ -70,7 +68,6 @@ public class OauthApiImpl implements OauthApi {
             Response response = okHttpClient.newCall(request).execute();
 
             if (!response.isSuccessful()) {
-
                 throw new IOException("Unexpected response: " + response);
             }
 
@@ -78,7 +75,8 @@ public class OauthApiImpl implements OauthApi {
 
             logger.atInfo().log("Response from server: " + jsonResponse);
 
-            TokenResponse tokenResponse = mJsonObjectMapper.deserialize(jsonResponse, TokenResponse.class);
+            Gson gson = new Gson();
+            TokenResponse tokenResponse = gson.fromJson(jsonResponse, TokenResponse.class);
 
             synchronized (tokenLock) {
                 tokenExpiry = Instant.now().plusSeconds(tokenResponse.getTokenExpire());

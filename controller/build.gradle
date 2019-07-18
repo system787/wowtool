@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'wowtool-actuator-service'
+    version = '0.1.0'
+}
+
+group 'system787.wowtool'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def controllerDependencies = rootProject.ext.controllerDependencies
+    def controllerTestDependencies = rootProject.ext.controllerTestDependencies
+
+    compile project(':domain')
+    compile project(':data')
+
+    implementation controllerDependencies.springBootWeb
+    implementation controllerDependencies.springBootActuator
+
+    //testCompile controllerDependencies.springBootStarterTest
+    testCompile 'junit:junit:4.12'
+}

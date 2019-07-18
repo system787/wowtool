@@ -1,16 +1,18 @@
 package system787.wowtool.data.cache;
 
 import com.google.gson.Gson;
-import javax.inject.Inject;
+
+import javax.inject.Named;
 import javax.inject.Singleton;
+
 
 @Singleton
 public class JsonObjectMapper {
 
-    private final Gson gson = new Gson();
+    private Gson gson = new Gson();
 
-    @Inject
-    JsonObjectMapper() {}
+    public JsonObjectMapper() {}
+
 
     public String serialize(Object obj, Class classOfObject) {
         return gson.toJson(obj, classOfObject);

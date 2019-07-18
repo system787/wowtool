@@ -1,3 +1,5 @@
 rootProject.name = 'wowtool'
 include ':domain'
 include ':data'
+include ':controller'
+

@@ -5,12 +5,27 @@ plugins {
 group 'system787.wowtool'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    def domainDependencies = rootProject.ext.domainDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
+    def loggingTools = rootProject.ext.loggingTools
+
+    implementation domainDependencies.javaxAnnotation
+    implementation domainDependencies.javaxInject
+    implementation domainDependencies.RxJava
+    implementation domainDependencies.arrow
+
+    implementation loggingTools.flogger
+    implementation loggingTools.flogger_system_backend
+
+    testCompile domainTestDependencies.mockito
+    testCompile domainTestDependencies.junit_jupiter_api
+
+    testCompile 'junit:junit:4.12'
 }

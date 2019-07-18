@@ -9,7 +9,24 @@ public class WowProfileEntity {
     @SerializedName("characters")
     private List<Character> mCharacterList;
 
-    static class Character {
+    public WowProfileEntity() {
+    }
+
+    public WowProfileEntity(List<Character> characterList) {
+        mCharacterList = characterList;
+    }
+
+    public List<Character> getCharacterList() {
+        return mCharacterList;
+    }
+
+    public void setCharacterList(List<Character> characterList) {
+        mCharacterList = characterList;
+    }
+
+    public static class Character {
+        public Character() {
+        }
 
         @SerializedName("name")
         private String name;
@@ -21,10 +38,10 @@ public class WowProfileEntity {
         private String battlegroup;
 
         @SerializedName("class")
-        private String charClass;
+        private short charClass;
 
         @SerializedName("race")
-        private String race;
+        private short race;
 
         @SerializedName("gender")
         private byte gender;
@@ -33,7 +50,7 @@ public class WowProfileEntity {
         private short level;
 
         @SerializedName("achievementPoints")
-        private int achievements;
+        private int achievementPoints;
 
         @SerializedName("thumbnail")
         private String thumbnail;
@@ -65,19 +82,19 @@ public class WowProfileEntity {
             this.battlegroup = battlegroup;
         }
 
-        public String getCharClass() {
+        public short getCharClass() {
             return charClass;
         }
 
-        public void setCharClass(String charClass) {
+        public void setCharClass(short charClass) {
             this.charClass = charClass;
         }
 
-        public String getRace() {
+        public short getRace() {
             return race;
         }
 
-        public void setRace(String race) {
+        public void setRace(short race) {
             this.race = race;
         }
 
@@ -97,12 +114,12 @@ public class WowProfileEntity {
             this.level = level;
         }
 
-        public int getAchievements() {
-            return achievements;
+        public int getAchievementPoints() {
+            return achievementPoints;
         }
 
-        public void setAchievements(int achievements) {
-            this.achievements = achievements;
+        public void setAchievementPoints(int achievementPoints) {
+            this.achievementPoints = achievementPoints;
         }
 
         public String getThumbnail() {

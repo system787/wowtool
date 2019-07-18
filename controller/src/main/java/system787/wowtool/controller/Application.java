@@ -1,4 +1,4 @@
-package system787.wowtool;
+package system787.wowtool.controller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -31,10 +31,17 @@ repositories {
 dependencies {
     def controllerDependencies = rootProject.ext.controllerDependencies
     def controllerTestDependencies = rootProject.ext.controllerTestDependencies
+    def loggingTools = rootProject.ext.loggingTools
 
     compile project(':domain')
     compile project(':data')
 
+    implementation controllerDependencies.RxJava
+
+    implementation loggingTools.flogger
+    implementation loggingTools.flogger_system_backend
+
+    implementation controllerDependencies.springWeb
     implementation controllerDependencies.springBootWeb
     implementation controllerDependencies.springBootActuator
 

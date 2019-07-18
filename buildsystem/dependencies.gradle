@@ -20,6 +20,8 @@ ext {
 
     javaxAnnotationVersion = '1.0'
     javaxInjectVersion = '1'
+    
+    springWebVersion = '5.1.8'
 
     // Testing
     junitVersion = '5.5.0'
@@ -65,7 +67,9 @@ ext {
 
     controllerDependencies = [
             springBootWeb:              "org.springframework.boot:spring-boot-starter-web",
-            springBootActuator:         "org.springframework.boot:spring-boot-starter-actuator"
+            springBootActuator:         "org.springframework.boot:spring-boot-starter-actuator",
+            springWeb:                  "org.springframeowrk:spring-web:${springWebVersion}",
+            RxJava:                     "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
     ]
 
     controllerTestDependencies = [

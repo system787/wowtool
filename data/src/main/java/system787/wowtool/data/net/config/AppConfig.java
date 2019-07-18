@@ -1,12 +1,6 @@
 package system787.wowtool.data.net.config;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.*;
-import java.lang.reflect.Type;
 import java.net.URL;
 
 public class AppConfig {

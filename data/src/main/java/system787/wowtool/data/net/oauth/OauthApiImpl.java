@@ -24,8 +24,6 @@ public class OauthApiImpl implements OauthApi {
     // Config
     private AppConfig mAppConfig = AppConfigMapper.mapAppConfig();
     private EnvConfig mEnvConfig = new EnvConfig();
-    private static final MediaType MEDIA_TYPE_MARKDOWN
-            = MediaType.parse("text/x-markdown; charset=utf-8");
 
     // Token
     private String token = null;
@@ -52,35 +50,41 @@ public class OauthApiImpl implements OauthApi {
                                     mEnvConfig.getClientSecret()
                             ).getBytes(StandardCharsets.UTF_8));
 
+            // String credentials = Credentials.basic(mEnvConfig.getClientId(), mEnvConfig.getClientSecret());
+
             OkHttpClient okHttpClient = new OkHttpClient();
+
+            RequestBody requestBody = new FormBody.Builder()
+                    .add("grant_type", "client_credentials")
+                    .build();
 
             Request request = new Request.Builder()
                     .url(mAppConfig.getTokenURL())
-                    .addHeader(
-                            "Authorization",
-                            String.format("Basic %s", credentials))
-                    .addHeader("grant_type", mAppConfig.getGrantType())
-                    .post(
-                            RequestBody.create(new byte[]{}, null ))
+                    .addHeader("Authorization", String.format("Basic %s", credentials))
+                    .post(requestBody)
                     .build();
 
             logger.atInfo().log("Request Body: " + request.toString());
+            logger.atInfo().log("Request Header: " + request.headers().toString());
 
             Response response = okHttpClient.newCall(request).execute();
 
             if (!response.isSuccessful()) {
 
                 throw new IOException("Unexpected response: " + response);
-            } else {
-
-                String jsonResponse = response.body().string();
-                TokenResponse tokenResponse = mJsonObjectMapper.deserialize(jsonResponse, TokenResponse.class);
-
-                synchronized (tokenLock) {
-                    tokenExpiry = Instant.now().plusSeconds(tokenResponse.getTokenExpire());
-                    token = tokenResponse.getAccessToken();
-                }
             }
+
+            String jsonResponse = response.body().string();
+
+            logger.atInfo().log("Response from server: " + jsonResponse);
+
+            TokenResponse tokenResponse = mJsonObjectMapper.deserialize(jsonResponse, TokenResponse.class);
+
+            synchronized (tokenLock) {
+                tokenExpiry = Instant.now().plusSeconds(tokenResponse.getTokenExpire());
+                token = tokenResponse.getAccessToken();
+            }
+
         }
 
         synchronized (tokenLock) {

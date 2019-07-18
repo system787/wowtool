@@ -1,0 +1,3 @@
+token-url: https://us.battle.net/oauth/token
+base-url: https://us.api.blizzard.com
+base-image-url: https://render-us.worldofwarcraft.com/character/

@@ -1,4 +1,4 @@
-package system787.wowtool.data.net.oauth;
+package system787.wowtool.data.net.oauth.model;
 
 public class TokenResponse {
 

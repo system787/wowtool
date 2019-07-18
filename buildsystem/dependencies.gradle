@@ -5,14 +5,27 @@ allprojects {
 }
 
 ext {
-
-
     dataDependencies = [
-            Okio:              "com.squareup.okio:okio:2.2.2",
-            okHttp:                "com.squareup.okhttp3:okhttp:4.0.0",
-            RxJava:              "io.reactivex.rxjava2:rxjava:2.2.10",
-            javaxAnnotation:    "javax.annotation:jsr250-api:1.0",
-            javaxInject:        "javax.inject:javax.inject:1",
-            gson:               "com.google.code.gson:gson:2.8.5"
+            Okio:                       "com.squareup.okio:okio:2.2.2",
+            okHttp:                     "com.squareup.okhttp3:okhttp:4.0.0",
+            RxJava:                     "io.reactivex.rxjava2:rxjava:2.2.10",
+            javaxAnnotation:            "javax.annotation:jsr250-api:1.0",
+            javaxInject:                "javax.inject:javax.inject:1",
+            gson:                       "com.google.code.gson:gson:2.8.5"
+    ]
+
+    loggingTools = [
+            flogger:                    "com.google.flogger:flogger:0.4",
+            flogger_system_backend:     "com.google.flogger:flogger-system-backend:0.4"
+    ]
+
+    dataTestDependencies = [
+            junit_jupiter:              "org.junit.jupiter:junit-jupiter:5.5.0",
+            junit_platform_launcher:    "org.junit.platform:junit-platform-launcher:1.5.0",
+            junit_jupiter_api:          "org.junit.jupiter:junit-jupiter-api:5.5.0",
+            junit_jupiter_engine:       "org.junit.jupiter:junit-jupiter-engine:5.5.0",
+            junit_vintage_engine:       "org.junit.vintage:junit-vintage-engine:5.5.0",
+            assertj:                    "org.assertj:assertj-core:3.11.1",
+            mockito:                    "org.mockito:mockito-core:2.+"
     ]
 }

@@ -2,19 +2,31 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = 11
+
 group 'system787.wowtool'
 version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+    def loggingTools = rootProject.ext.loggingTools
 
-    compile 'com.squareup.okio:okio:2.2.2'
-    implementation 'com.squareup.okhttp3:okhttp:4.0.0'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation dataDependencies.javaxAnnotation
+    implementation dataDependencies.javaxInject
+    implementation dataDependencies.RxJava
+    implementation dataDependencies.Okio
+    implementation dataDependencies.okHttp
+    implementation dataDependencies.gson
+
+    implementation loggingTools.flogger
+    implementation loggingTools.flogger_system_backend
+
+    testCompile dataTestDependencies.mockito
+    testCompile dataTestDependencies.junit_jupiter_api
+    testCompile 'junit:junit:4.12'
 }

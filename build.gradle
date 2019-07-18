@@ -7,12 +7,9 @@ apply from: 'buildsystem/dependencies.gradle'
 group 'system787.wowtool'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}

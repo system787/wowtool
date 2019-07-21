@@ -20,8 +20,12 @@ ext {
 
     javaxAnnotationVersion = '1.0'
     javaxInjectVersion = '1'
-    
-    springWebVersion = '5.1.8'
+
+    springCoreVersion = '5.1.8.RELEASE'
+    springBeanVersion = '5.1.8.RELEASE'
+    springWebVersion = '5.1.8.RELEASE'
+    springBootVersion = '2.1.6.RELEASE'
+    springStarterVersion = '2.1.6.RELEASE'
 
     // Testing
     junitVersion = '5.5.0'
@@ -62,18 +66,27 @@ ext {
             junit_jupiter_engine:       "org.junit.jupiter:junit-jupiter-engine:${junitVersion}",
             junit_vintage_engine:       "org.junit.vintage:junit-vintage-engine:${junitVersion}",
             assertj:                    "org.assertj:assertj-core:${assertJVersion}",
-            mockito:                    "org.mockito:mockito-core:${mockitoVersion}"
+            mockito:                    "org.mockito:mockito-core:${mockitoVersion}",
+            gson:                       "com.google.code.gson:gson:${gsonVersion}"
     ]
 
     controllerDependencies = [
+            javaxAnnotation:            "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
+            javaxInject:                "javax.inject:javax.inject:${javaxInjectVersion}",
+            springCore:                 "org.springframework:spring-core:${springCoreVersion}",
+            springBoot:                 "org.springframework.boot:spring-boot:${springBootVersion}",
+            springBeans:                "org.springframework:spring-beans:${springBeanVersion}",
+            springWeb:                  "org.springframework:spring-web:${springWebVersion}",
             springBootWeb:              "org.springframework.boot:spring-boot-starter-web",
             springBootActuator:         "org.springframework.boot:spring-boot-starter-actuator",
-            springWeb:                  "org.springframeowrk:spring-web:${springWebVersion}",
-            RxJava:                     "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
+            RxJava:                     "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            Okio:                       "com.squareup.okio:okio:${okioVersion}",
+            okHttp:                     "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            gson:                       "com.google.code.gson:gson:${gsonVersion}"
     ]
 
     controllerTestDependencies = [
-            springBootStarterTest:      "org.springframework.boot:spring-boot-starter-test"
+            springBootStarterTest:      "org.springframework.boot:spring-boot-starter-test:${springStarterVersion}"
     ]
 
     loggingTools = [

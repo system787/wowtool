@@ -3,16 +3,12 @@ package system787.wowtool.data.entity.mapper;
 import system787.wowtool.data.entity.WowProfileEntity;
 import system787.wowtool.domain.WowProfile;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Singleton
 public class WowProfileEntityDataMapper {
 
-    @Inject
     WowProfileEntityDataMapper() {}
 
     public WowProfile map(WowProfileEntity entity) {

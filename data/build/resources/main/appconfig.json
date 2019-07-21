@@ -1,6 +1,0 @@
-{
-  "tokenUrl": "https://us.battle.net/oauth/token",
-  "baseUrl": "https://us.api.blizzard.com",
-  "authenticationLevel": "Basic",
-  "grantType": "client_credentials"
-}

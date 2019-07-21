@@ -1,5 +1,6 @@
 package system787.wowtool.controller.components.model.mapper;
 
+import org.springframework.context.annotation.Bean;
 import system787.wowtool.controller.components.model.TokenResponseModel;
 import system787.wowtool.domain.TokenResponse;
 

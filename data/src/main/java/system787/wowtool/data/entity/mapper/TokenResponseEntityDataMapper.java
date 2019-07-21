@@ -13,7 +13,7 @@ import java.util.List;
 public class TokenResponseEntityDataMapper {
 
     @Inject
-    TokenResponseEntityDataMapper() {}
+    public TokenResponseEntityDataMapper() {}
 
     public TokenResponse transform(TokenResponseEntity entity) {
         if (entity != null) {

@@ -13,11 +13,17 @@ import java.util.concurrent.TimeUnit;
 
 @Singleton
 public class JobExecutor implements ThreadExecutor {
+
     private final ThreadPoolExecutor mThreadPoolExecutor;
 
     @Inject
-    JobExecutor() {
-        this.mThreadPoolExecutor = new ThreadPoolExecutor(3, 6, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<>(), new JobThreadFactory());
+    public JobExecutor() {
+        this.mThreadPoolExecutor = new ThreadPoolExecutor(3,
+                6,
+                10,
+                TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(),
+                new JobThreadFactory());
     }
 
     @Override

@@ -12,11 +12,11 @@ import javax.inject.Singleton;
 @Singleton
 public class OAuthDataRepository implements OAuthApi {
 
-    private final TokenResponseEntityDataMapper mDataMapper;
+    private TokenResponseEntityDataMapper mDataMapper;
 
     @Inject
-    public OAuthDataRepository(TokenResponseEntityDataMapper dataMapper) {
-        this.mDataMapper = dataMapper;
+    public OAuthDataRepository() {
+        this.mDataMapper = new TokenResponseEntityDataMapper();
     }
 
     @Override

@@ -48,12 +48,13 @@ dependencies {
     implementation loggingTools.flogger
     implementation loggingTools.flogger_system_backend
 
-    //implementation controllerDependencies.springCore
-    //implementation controllerDependencies.springBoot
-    //implementation controllerDependencies.springBeans
-    //implementation controllerDependencies.springWeb
+    implementation controllerDependencies.springCore
+    implementation controllerDependencies.springBoot
+    implementation controllerDependencies.springBeans
+    implementation controllerDependencies.springWeb
     implementation controllerDependencies.springBootWeb
     implementation controllerDependencies.springBootActuator
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
 
     //testCompile controllerDependencies.springBootStarterTest
     testCompile 'junit:junit:4.12'

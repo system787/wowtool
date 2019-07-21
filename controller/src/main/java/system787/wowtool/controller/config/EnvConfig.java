@@ -1,8 +1,11 @@
 package system787.wowtool.controller.config;
 
 import com.google.common.flogger.FluentLogger;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import system787.wowtool.data.net.exception.EnvironmentVariablesNotSet;
 
+@Configuration
 public class EnvConfig {
     private static final String CLIENT_ID = "BLIZZARD_CLIENT_ID";
     private static final String CLIENT_SECRET = "BLIZZARD_CLIENT_SECRET";
@@ -22,10 +25,12 @@ public class EnvConfig {
         }
     }
 
+    @Bean
     public String getClientId() {
         return mClientID;
     }
 
+    @Bean
     public String getClientSecret() {
         return mClientSecret;
     }
